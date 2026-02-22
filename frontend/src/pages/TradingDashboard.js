@@ -228,13 +228,13 @@ const TradingDashboard = ({ user, onLogout }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
           {/* Chart - Large */}
           <div className="lg:col-span-8 glass-card p-6">
-            <h2 className="text-xl font-bold font-unbounded mb-4 uppercase tracking-tight">Live FTC Chart - DexTools</h2>
+            <h2 className="text-xl font-bold font-unbounded mb-4 uppercase tracking-tight">Live FTC Chart - Birdeye</h2>
             <div className="w-full h-[500px] bg-black/50 border border-white/10 overflow-hidden" data-testid="trading-chart">
               <iframe
-                src="https://www.dextools.io/app/solana/pair-explorer/5cKaxcoLhjc5A3gUD9nCFRfm69iMiggTHpafz4Gipump"
+                src="https://birdeye.so/solana/token/5cKaxcoLhjc5A3gUD9nCFRfm69iMiggTHpafz4Gipump"
                 className="w-full h-full"
                 frameBorder="0"
-                title="Fitcoin DexTools Chart"
+                title="Fitcoin Birdeye Chart"
                 allow="clipboard-write"
               />
             </div>
