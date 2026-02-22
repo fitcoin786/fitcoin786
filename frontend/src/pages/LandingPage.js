@@ -8,7 +8,7 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const LandingPage = () => {
   const navigate = useNavigate();
-  const [price, setPrice] = useState(0.000053);
+  const [price, setPrice] = useState(0.00000349400);
   const [change, setChange] = useState(0);
 
   useEffect(() => {
