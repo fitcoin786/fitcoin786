@@ -26,16 +26,18 @@ const TradingDashboard = ({ user, onLogout }) => {
 
   // Fetch price data
   useEffect(() => {
-    const fetchChartData = async () => {
+    const fetchPrice = async () => {
       try {
-        const response = await axios.get(`${API}/price/history`);
-        setChartData(response.data.data);
+        const response = await axios.get(`${API}/price/fitcoin`);
+        setPriceData(response.data);
       } catch (error) {
-        console.error('Failed to fetch chart data:', error);
+        console.error('Failed to fetch price:', error);
       }
     };
 
-    fetchChartData();
+    fetchPrice();
+    const interval = setInterval(fetchPrice, 5000); // Update every 5s
+    return () => clearInterval(interval);
   }, []);
 
   // Fetch order book
