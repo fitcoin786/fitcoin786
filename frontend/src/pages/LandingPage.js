@@ -308,7 +308,7 @@ const LandingPage = () => {
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-center mb-16 font-unbounded uppercase">
             Trade FitCoin <span className="text-[#FF9F1C]">On Future Trade</span>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             <motion.div whileHover={{ scale: 1.02 }} className="glass-card p-8 relative overflow-hidden group">
               <Zap className="h-12 w-12 text-[#FF9F1C] mb-6" />
               <h3 className="text-2xl font-bold mb-4 font-unbounded">Real-Time Trading</h3>
@@ -325,6 +325,28 @@ const LandingPage = () => {
               <p className="text-white/70">Track top gainers, losers, and trending cryptos with live data.</p>
             </motion.div>
           </div>
+
+          {/* Mining CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="glass-card p-8 border-2 border-[#00F090]/30 text-center"
+          >
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="text-5xl">⛏️</div>
+              <h3 className="text-3xl font-black font-unbounded uppercase text-[#00F090]">Mine Fitcoin</h3>
+            </div>
+            <p className="text-lg text-white/80 mb-6">Start mining FTC tokens with our official mining application</p>
+            <a
+              href="https://fitcoinminers.github.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block rounded-sm px-12 py-4 bg-gradient-to-r from-[#00F090] to-[#00F090]/80 text-black font-black uppercase tracking-widest text-lg hover:brightness-110 transition-all duration-300 shadow-[0_0_20px_rgba(0,240,144,0.5)] hover:shadow-[0_0_30px_rgba(0,240,144,0.7)]"
+            >
+              Open FTC Mining App →
+            </a>
+          </motion.div>
         </div>
       </section>
 
