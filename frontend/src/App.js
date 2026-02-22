@@ -67,7 +67,13 @@ function App() {
             } 
           />
           <Route 
-            path="/history" \n            element={\n              isAuthenticated ? \n              <TradeHistory user={user} onLogout={handleLogout} /> : \n              <Navigate to="/auth" />\n            } \n          />
+            path="/history" 
+            element={
+              isAuthenticated ? 
+              <TradeHistory user={user} onLogout={handleLogout} /> : 
+              <Navigate to="/auth" />
+            } 
+          />
           <Route 
             path="/search" 
             element={
