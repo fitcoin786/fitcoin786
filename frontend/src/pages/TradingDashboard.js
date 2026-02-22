@@ -206,7 +206,7 @@ const TradingDashboard = ({ user, onLogout }) => {
               </div>
               {priceData && (
                 <div className="text-4xl font-black font-mono text-[#FF9F1C]">
-                  ${priceData.price.toFixed(6)}
+                  ${priceData.price.toFixed(11)}
                 </div>
               )}
             </div>
