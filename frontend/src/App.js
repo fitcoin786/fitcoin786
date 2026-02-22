@@ -67,10 +67,20 @@ function App() {
             } 
           />
           <Route 
-            path="/history" 
+            path="/history" \n            element={\n              isAuthenticated ? \n              <TradeHistory user={user} onLogout={handleLogout} /> : \n              <Navigate to="/auth" />\n            } \n          />
+          <Route 
+            path="/search" 
             element={
               isAuthenticated ? 
-              <TradeHistory user={user} onLogout={handleLogout} /> : 
+              <CryptoSearch user={user} onLogout={handleLogout} /> : 
+              <Navigate to="/auth" />
+            } 
+          />
+          <Route 
+            path="/market" 
+            element={
+              isAuthenticated ? 
+              <MarketOverview user={user} onLogout={handleLogout} /> : 
               <Navigate to="/auth" />
             } 
           />
