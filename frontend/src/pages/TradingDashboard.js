@@ -11,7 +11,6 @@ const API = `${BACKEND_URL}/api`;
 
 const TradingDashboard = ({ user, onLogout }) => {
   const [priceData, setPriceData] = useState(null);
-  const [chartData, setChartData] = useState([]);
   const [orderBook, setOrderBook] = useState({ bids: [], asks: [] });
   const [wallet, setWallet] = useState(null);
   const [orderType, setOrderType] = useState('buy');
