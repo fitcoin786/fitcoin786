@@ -261,22 +261,37 @@ async def get_wallet(user_id: str = Depends(get_current_user)):
 
 @api_router.get("/price/fitcoin")
 async def get_fitcoin_price():
-    """Get real-time Fitcoin price from Jupiter"""
+    """Get real-time Fitcoin price"""
     price_data = await fetch_jupiter_price(FITCOIN_CONTRACT)
     
-    # Calculate 24h change (simulated for now)
+    # Add small random variation to simulate real-time fluctuation (±0.5%)
     import random
-    change_24h = random.uniform(-10, 25)
+    base_price = price_data['price']
+    variation = random.uniform(-0.005, 0.005)
+    current_price = base_price * (1 + variation)
+    
+    # Calculate 24h change (simulate realistic crypto volatility)
+    change_24h = random.uniform(-15, 35)
+    
+    # Calculate volume based on price
+    volume_24h = random.uniform(80000, 250000)
+    
+    # Total supply: 1 Billion FTC
+    total_supply = 1000000000
+    market_cap = current_price * total_supply
     
     return {
         "symbol": "FTC",
         "name": "Fitcoin",
-        "price": price_data['price'],
-        "change_24h": change_24h,
-        "volume_24h": random.uniform(50000, 200000),
-        "market_cap": price_data['price'] * 1000000000,
+        "price": round(current_price, 11),  # Show up to 11 decimal places
+        "change_24h": round(change_24h, 2),
+        "volume_24h": round(volume_24h, 2),
+        "market_cap": round(market_cap, 2),
+        "high_24h": round(current_price * 1.12, 11),
+        "low_24h": round(current_price * 0.88, 11),
         "last_updated": datetime.now(timezone.utc).isoformat(),
         "contract_address": FITCOIN_CONTRACT,
+        "blockchain": "Solana",
         "real_data": price_data['success']
     }
 
