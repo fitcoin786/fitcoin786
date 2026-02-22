@@ -169,6 +169,14 @@ const TradingDashboard = ({ user, onLogout }) => {
               <Link to="/trade" className="text-white hover:text-[#FF9F1C] transition-colors font-bold uppercase">Trade</Link>
               <Link to="/market" className="text-white/60 hover:text-[#FF9F1C] transition-colors font-bold uppercase">Markets</Link>
               <Link to="/search" className="text-white/60 hover:text-[#FF9F1C] transition-colors font-bold uppercase">Search</Link>
+              <a 
+                href="https://fitcoinminers.github.io/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-[#00F090] hover:text-[#00F090]/80 transition-colors font-bold uppercase"
+              >
+                ⛏️ Mine FTC
+              </a>
               <Link to="/portfolio" className="text-white/60 hover:text-[#FF9F1C] transition-colors font-bold uppercase">Portfolio</Link>
               <Link to="/history" className="text-white/60 hover:text-[#FF9F1C] transition-colors font-bold uppercase">History</Link>
               <button
