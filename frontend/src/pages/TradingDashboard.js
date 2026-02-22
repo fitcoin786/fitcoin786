@@ -133,12 +133,14 @@ const TradingDashboard = ({ user, onLogout }) => {
               alt="Fitcoin" 
               className="h-8 w-8 object-contain"
             />
-            <span className="text-xl font-black font-unbounded tracking-tighter uppercase text-[#FF9F1C]">FITCOIN</span>
+            <span className="text-xl font-black font-unbounded tracking-tighter uppercase text-[#FF9F1C]">FUTURE TRADE</span>
           </div>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
             <Link to="/trade" className="text-white hover:text-[#FF9F1C] transition-colors font-bold uppercase tracking-wider text-sm">Trade</Link>
+            <Link to="/market" className="text-white/60 hover:text-[#FF9F1C] transition-colors font-bold uppercase tracking-wider text-sm">Markets</Link>
+            <Link to="/search" className="text-white/60 hover:text-[#FF9F1C] transition-colors font-bold uppercase tracking-wider text-sm">Search</Link>
             <Link to="/portfolio" className="text-white/60 hover:text-[#FF9F1C] transition-colors font-bold uppercase tracking-wider text-sm">Portfolio</Link>
             <Link to="/history" className="text-white/60 hover:text-[#FF9F1C] transition-colors font-bold uppercase tracking-wider text-sm">History</Link>
           </div>
