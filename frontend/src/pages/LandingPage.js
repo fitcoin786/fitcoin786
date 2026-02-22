@@ -241,7 +241,8 @@ const LandingPage = () => {
       {/* Footer */}
       <footer className="border-t border-white/5 py-8 px-6 text-center text-white/50 text-sm">
         <p className="font-mono">© 2026 Future Trade. Powered by Fitcoin (FTC). All rights reserved.</p>
-        <p className="text-xs mt-2 text-white/30">Contract: 5cKaxcoLhjc5A3gUD9nCFRfm69iMiggTHpafz4Gipump</p>
+        <p className="text-xs mt-2 text-white/30 font-mono">Solana Contract: 5cKaxcoLhjc5A3gUD9nCFRfm69iMiggTHpafz4Gipump</p>
+        <p className="text-xs mt-1 text-[#FF9F1C]/60 font-bold">Current Price: $0.00000349400 (Live updates every 5 seconds)</p>
       </footer>
     </div>
   );
