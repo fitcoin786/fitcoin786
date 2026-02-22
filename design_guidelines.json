@@ -1,0 +1,128 @@
+{
+  "brand_identity": {
+    "name": "Fitcoin Futurecoin (FTC)",
+    "tone": "Hyper-Active, Spiritual, Wealthy, Disciplined",
+    "archetype": "The Cyber-Monk",
+    "theme_mode": "dark",
+    "primary_vibe": "Spiritual Cyberpunk"
+  },
+  "typography": {
+    "font_family_heading": "Unbounded, sans-serif",
+    "font_family_body": "Manrope, sans-serif",
+    "font_family_code": "JetBrains Mono, monospace",
+    "scale": {
+      "h1": "text-5xl md:text-7xl font-black tracking-tighter uppercase",
+      "h2": "text-4xl md:text-5xl font-bold tracking-tight",
+      "h3": "text-2xl md:text-3xl font-bold tracking-tight",
+      "body": "text-base md:text-lg font-medium leading-relaxed",
+      "caption": "text-xs font-mono tracking-wider uppercase text-muted-foreground"
+    },
+    "weights": {
+      "heading": "800",
+      "body": "500",
+      "bold": "700"
+    }
+  },
+  "colors": {
+    "background": {
+      "app": "#050505",
+      "card": "#0F1115",
+      "card_hover": "#16181D",
+      "overlay": "rgba(5, 5, 5, 0.8)"
+    },
+    "brand": {
+      "primary": "#FF9F1C",
+      "secondary": "#FFD700",
+      "accent": "#00F090",
+      "destructive": "#FF2E50"
+    },
+    "text": {
+      "primary": "#FFFFFF",
+      "secondary": "#EAE0D5",
+      "muted": "#888888",
+      "accent": "#FF9F1C"
+    },
+    "chart": {
+      "up": "#00F090",
+      "down": "#FF2E50",
+      "bg_gradient_start": "rgba(0, 240, 144, 0.2)",
+      "bg_gradient_end": "rgba(0, 240, 144, 0)"
+    },
+    "borders": {
+      "default": "#2A2A2A",
+      "active": "#FF9F1C",
+      "subtle": "rgba(255, 255, 255, 0.1)"
+    }
+  },
+  "visual_enhancers": {
+    "shadows": {
+      "card": "0 8px 32px rgba(0, 0, 0, 0.4)",
+      "glow": "0 0 20px rgba(255, 159, 28, 0.3)",
+      "neon_green": "0 0 15px rgba(0, 240, 144, 0.4)",
+      "neon_red": "0 0 15px rgba(255, 46, 80, 0.4)"
+    },
+    "radius": {
+      "card": "0px",
+      "button": "2px",
+      "input": "0px"
+    },
+    "glassmorphism": {
+      "nav": "bg-black/60 backdrop-blur-xl border-b border-white/5",
+      "card": "bg-[#0F1115]/80 backdrop-blur-md border border-white/5"
+    },
+    "gradients": {
+      "hero_text": "bg-clip-text text-transparent bg-gradient-to-r from-[#FF9F1C] via-[#FFD700] to-[#FF9F1C]",
+      "button_primary": "bg-gradient-to-r from-[#FF9F1C] to-[#FFD700] text-black font-bold hover:brightness-110",
+      "spiritual_aura": "radial-gradient(circle at center, rgba(255, 159, 28, 0.15) 0%, rgba(5, 5, 5, 0) 70%)"
+    }
+  },
+  "layout_strategy": {
+    "container": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+    "dashboard_grid": "grid grid-cols-1 md:grid-cols-12 gap-4 p-4",
+    "spacing": {
+      "section_gap": "py-24",
+      "card_padding": "p-6"
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "rounded-sm px-8 py-3 bg-brand-primary hover:bg-brand-secondary text-black font-black uppercase tracking-widest transition-all duration-300 shadow-[0_0_15px_rgba(255,159,28,0.4)] hover:shadow-[0_0_25px_rgba(255,159,28,0.6)]",
+      "outline": "rounded-sm px-8 py-3 border border-brand-primary/50 text-brand-primary hover:bg-brand-primary/10 font-bold uppercase tracking-widest",
+      "ghost": "text-muted-foreground hover:text-white transition-colors"
+    },
+    "cards": {
+      "dashboard": "bg-card border border-white/5 relative overflow-hidden group hover:border-brand-primary/30 transition-colors",
+      "glass": "bg-black/40 backdrop-blur-xl border border-white/10"
+    },
+    "inputs": {
+      "default": "bg-black/50 border-white/10 focus:border-brand-primary/50 text-white placeholder:text-white/20 rounded-none h-12"
+    }
+  },
+  "image_urls": {
+    "hero_background": "https://images.unsplash.com/photo-1746470081927-2b40f84a4f5d?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "abstract_energy": "https://images.pexels.com/photos/34281360/pexels-photo-34281360.jpeg",
+    "crypto_coins": "https://images.pexels.com/photos/8358039/pexels-photo-8358039.jpeg",
+    "logo_url": "https://customer-assets.emergentagent.com/job_98e4db14-814c-417e-af31-affa0c6b97bc/artifacts/7fxj3a88_1000161961.webp"
+  },
+  "instructions_to_main_agent": [
+    "INSTALL_FONTS: Add '@fontsource/unbounded' and '@fontsource/manrope' and '@fontsource/jetbrains-mono' to package.json immediately.",
+    "THEME_SETUP: Force dark mode in tailwind.config.js. There is no light mode for this brand.",
+    "CHART_LIBRARY: Use 'lightweight-charts' for the candlestick chart. It is faster and looks more professional than recharts for crypto.",
+    "ANIMATION: Use 'framer-motion' for all page transitions and 'react-fast-marquee' for the price ticker tape.",
+    "SPIRITUAL_TOUCH: Use the 'hero_background' image with a low opacity overlay (20%) in the dashboard background to give it texture.",
+    "HYPER_ACTIVE: Prices must flash Green/Red on update. Use simple CSS animations for this.",
+    "NAVBAR: Create a floating glass navbar. It should not be stuck to the top edge (margin-top: 4).",
+    "LOGO: The user provided logo is the 'Spirit'. Place it prominently in the center of the Auth pages.",
+    "GRID: Use a dense Bento grid for the dashboard. Order Book and Chart should dominate.",
+    "NO_ROUNDED_CORNERS: Keep border-radius minimal (0px or 2px) for a sharp, precise, 'Blade Runner' feel.",
+    "DATA_TESTID: Add data-testid to all interactive elements (buttons, inputs, trade execution) for testing."
+  ],
+  "UNIVERSAL_GUIDELINES": [
+    "Do not use generic gray backgrounds. Use tinted blacks (#050505).",
+    "Avoid standard 'Bootstrap' layouts. Use asymmetry.",
+    "Text contrast must be high. Use white for primary text, not gray.",
+    "Interactive elements must provide immediate visual feedback (glow, color shift).",
+    "Use uppercase for labels to increase density and readability at small sizes.",
+    "Toasts must be styled with 'sonner' and match the dark/gold theme."
+  ]
+}
