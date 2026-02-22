@@ -37,23 +37,13 @@ const LandingPage = () => {
             />
             <span className="text-2xl font-black font-unbounded tracking-tighter uppercase text-[#FF9F1C]">FUTURE TRADE</span>
           </div>
-          <div className="flex items-center gap-4">
-            <a
-              href="https://fitcoinminers.github.io/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-sm px-6 py-2 bg-gradient-to-r from-[#00F090] to-[#00F090]/80 text-black font-black uppercase tracking-widest text-sm hover:brightness-110 transition-all duration-300 shadow-[0_0_15px_rgba(0,240,144,0.4)] hover:shadow-[0_0_25px_rgba(0,240,144,0.6)] flex items-center gap-2"
-            >
-              ⛏️ Mine FTC
-            </a>
-            <button
-              onClick={() => navigate('/auth')}
-              className="rounded-sm px-8 py-3 bg-gradient-to-r from-[#FF9F1C] to-[#FFD700] text-black font-black uppercase tracking-widest hover:brightness-110 transition-all duration-300 shadow-[0_0_15px_rgba(255,159,28,0.4)] hover:shadow-[0_0_25px_rgba(255,159,28,0.6)]"
-              data-testid="nav-get-started-btn"
-            >
-              Get Started
-            </button>
-          </div>
+          <button
+            onClick={() => navigate('/auth')}
+            className="rounded-sm px-8 py-3 bg-gradient-to-r from-[#FF9F1C] to-[#FFD700] text-black font-black uppercase tracking-widest hover:brightness-110 transition-all duration-300 shadow-[0_0_15px_rgba(255,159,28,0.4)] hover:shadow-[0_0_25px_rgba(255,159,28,0.6)]"
+            data-testid="nav-get-started-btn"
+          >
+            Get Started
+          </button>
         </div>
       </motion.nav>
 
