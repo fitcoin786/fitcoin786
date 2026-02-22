@@ -52,7 +52,7 @@ const LandingPage = () => {
         <Marquee gradient={false} speed={50}>
           <div className="flex items-center gap-12 py-2 px-4">
             <span className="font-mono text-sm uppercase tracking-wider text-white/60">FTC/USD</span>
-            <span className="font-mono text-lg font-bold text-[#FF9F1C]">${price.toFixed(8)}</span>
+            <span className="font-mono text-lg font-bold text-[#FF9F1C]">${price.toFixed(11)}</span>
             <span className={`font-mono text-sm ${change >= 0 ? 'text-[#00F090]' : 'text-[#FF2E50]'}`}>
               {change >= 0 ? '+' : ''}{change.toFixed(2)}%
             </span>
