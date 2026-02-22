@@ -174,6 +174,8 @@ const TradingDashboard = ({ user, onLogout }) => {
           <div className="md:hidden border-t border-white/5 bg-black/90 backdrop-blur-xl">
             <div className="flex flex-col gap-4 p-6">
               <Link to="/trade" className="text-white hover:text-[#FF9F1C] transition-colors font-bold uppercase">Trade</Link>
+              <Link to="/market" className="text-white/60 hover:text-[#FF9F1C] transition-colors font-bold uppercase">Markets</Link>
+              <Link to="/search" className="text-white/60 hover:text-[#FF9F1C] transition-colors font-bold uppercase">Search</Link>
               <Link to="/portfolio" className="text-white/60 hover:text-[#FF9F1C] transition-colors font-bold uppercase">Portfolio</Link>
               <Link to="/history" className="text-white/60 hover:text-[#FF9F1C] transition-colors font-bold uppercase">History</Link>
               <button
