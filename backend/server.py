@@ -124,10 +124,26 @@ async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(s
 # ============ PRICE FETCHING ============
 
 async def fetch_jupiter_price(token_address: str):
-    """Fetch real-time price from Jupiter Aggregator"""
+    """Fetch real-time price - Base price from DexTools: $0.00000349"""
     try:
         async with httpx.AsyncClient(timeout=10.0) as client:
-            # Try Jupiter API v2 first
+            # Try DexTools API (if available)
+            try:
+                response = await client.get(
+                    f"https://api.dextools.io/v1/token?chain=solana&address={token_address}",
+                    headers={"accept": "application/json"}
+                )
+                if response.status_code == 200:
+                    data = response.json()
+                    if 'data' in data and 'price' in data['data']:
+                        return {
+                            'price': float(data['data']['price']),
+                            'success': True
+                        }
+            except:
+                pass
+            
+            # Try Jupiter API v2
             try:
                 response = await client.get(
                     f"https://api.jup.ag/price/v2?ids={token_address}",
@@ -138,13 +154,13 @@ async def fetch_jupiter_price(token_address: str):
                     if 'data' in data and token_address in data['data']:
                         price_data = data['data'][token_address]
                         return {
-                            'price': price_data.get('price', 0.00000349400),
+                            'price': price_data.get('price', 0.00000349),
                             'success': True
                         }
             except:
                 pass
             
-            # Try alternative: Use Birdeye API (no auth required for public data)
+            # Try Birdeye API
             try:
                 response = await client.get(
                     f"https://public-api.birdeye.so/public/price?address={token_address}",
@@ -160,11 +176,11 @@ async def fetch_jupiter_price(token_address: str):
             except:
                 pass
         
-        # Fallback to known current price
-        return {'price': 0.00000349400, 'success': False}
+        # Fallback to DexTools confirmed price
+        return {'price': 0.00000349, 'success': False}
     except Exception as e:
         logging.error(f"Price fetch error: {e}")
-        return {'price': 0.00000349400, 'success': False}
+        return {'price': 0.00000349, 'success': False}
 
 async def fetch_coingecko_market_data():
     """Fetch market overview from CoinGecko"""
