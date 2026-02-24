@@ -91,6 +91,14 @@ function App() {
               <Navigate to="/auth" />
             } 
           />
+          <Route 
+            path="/send-receive" 
+            element={
+              isAuthenticated ? 
+              <SendReceive user={user} onLogout={handleLogout} /> : 
+              <Navigate to="/auth" />
+            } 
+          />
         </Routes>
       </BrowserRouter>
       <Toaster position="top-right" theme="dark" />
