@@ -471,6 +471,112 @@ async def get_trade_history(user_id: str = Depends(get_current_user)):
     orders = await db.orders.find({"user_id": user_id}, {"_id": 0}).sort("created_at", -1).limit(50).to_list(50)
     return [TradeOrder(**order) for order in orders]
 
+# ============ TRANSACTION ROUTES ============
+
+@api_router.post("/transaction/send")
+async def send_transaction(input: dict, user_id: str = Depends(get_current_user)):
+    """Send FTC to another address"""
+    to_address = input.get('to_address')
+    amount = input.get('amount')
+    
+    if not to_address or not amount or amount <= 0:
+        raise HTTPException(status_code=400, detail="Invalid input")
+    
+    wallet = await db.wallets.find_one({"user_id": user_id}, {"_id": 0})
+    if not wallet or wallet["ftc_balance"] < amount:
+        raise HTTPException(status_code=400, detail="Insufficient FTC balance")
+    
+    # Update sender balance
+    new_ftc = wallet["ftc_balance"] - amount
+    await db.wallets.update_one(
+        {"user_id": user_id},
+        {"$set": {"ftc_balance": new_ftc, "updated_at": datetime.now(timezone.utc).isoformat()}}
+    )
+    
+    # Create transaction record
+    tx_id = str(uuid.uuid4())
+    tx_doc = {
+        "id": tx_id,
+        "user_id": user_id,
+        "order_type": "send",
+        "to_address": to_address,
+        "amount": amount,
+        "price": 0,
+        "total": 0,
+        "status": "completed",
+        "blockchain": "solana",
+        "contract": FITCOIN_CONTRACT,
+        "created_at": datetime.now(timezone.utc).isoformat()
+    }
+    await db.orders.insert_one(tx_doc)
+    
+    return {"success": True, "transaction_id": tx_id, "message": "FTC sent successfully"}
+
+@api_router.post("/transaction/exchange")
+async def exchange_transaction(input: dict, user_id: str = Depends(get_current_user)):
+    """Exchange between FTC and USD"""
+    exchange_type = input.get('exchange_type')
+    amount = input.get('amount')
+    
+    if not exchange_type or not amount or amount <= 0:
+        raise HTTPException(status_code=400, detail="Invalid input")
+    
+    wallet = await db.wallets.find_one({"user_id": user_id}, {"_id": 0})
+    if not wallet:
+        raise HTTPException(status_code=404, detail="Wallet not found")
+    
+    # Get current FTC price
+    price_data = await fetch_jupiter_price(FITCOIN_CONTRACT)
+    ftc_price = price_data['price']
+    
+    if exchange_type == "ftc-to-usd":
+        if wallet["ftc_balance"] < amount:
+            raise HTTPException(status_code=400, detail="Insufficient FTC balance")
+        
+        usd_amount = amount * ftc_price
+        new_ftc = wallet["ftc_balance"] - amount
+        new_usd = wallet["usd_balance"] + usd_amount
+        
+        await db.wallets.update_one(
+            {"user_id": user_id},
+            {"$set": {"ftc_balance": new_ftc, "usd_balance": new_usd, "updated_at": datetime.now(timezone.utc).isoformat()}}
+        )
+        
+        order_type = "sell"
+    else:  # usd-to-ftc
+        ftc_amount = amount / ftc_price
+        if wallet["usd_balance"] < amount:
+            raise HTTPException(status_code=400, detail="Insufficient USD balance")
+        
+        new_usd = wallet["usd_balance"] - amount
+        new_ftc = wallet["ftc_balance"] + ftc_amount
+        
+        await db.wallets.update_one(
+            {"user_id": user_id},
+            {"$set": {"ftc_balance": new_ftc, "usd_balance": new_usd, "updated_at": datetime.now(timezone.utc).isoformat()}}
+        )
+        
+        order_type = "buy"
+    
+    # Create transaction record
+    tx_id = str(uuid.uuid4())
+    tx_doc = {
+        "id": tx_id,
+        "user_id": user_id,
+        "order_type": order_type,
+        "amount": ftc_amount if exchange_type == "usd-to-ftc" else amount,
+        "price": ftc_price,
+        "total": usd_amount if exchange_type == "ftc-to-usd" else amount,
+        "status": "completed",
+        "exchange_type": exchange_type,
+        "blockchain": "solana",
+        "contract": FITCOIN_CONTRACT,
+        "created_at": datetime.now(timezone.utc).isoformat()
+    }
+    await db.orders.insert_one(tx_doc)
+    
+    return {"success": True, "transaction_id": tx_id, "message": "Exchange completed"}
+
 # ============ ORDER BOOK ============
 
 @api_router.get("/orderbook")
