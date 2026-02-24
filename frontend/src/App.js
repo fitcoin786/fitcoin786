@@ -8,6 +8,7 @@ import Portfolio from './pages/Portfolio';
 import TradeHistory from './pages/TradeHistory';
 import CryptoSearch from './pages/CryptoSearch';
 import MarketOverview from './pages/MarketOverview';
+import SendReceive from './pages/SendReceive';
 import { Toaster } from './components/ui/sonner';
 
 function App() {
