@@ -329,7 +329,7 @@ const LandingPage = () => {
             </div>
             <p className="text-lg text-white/80 mb-6">Start mining FTC tokens with our official mining application</p>
             <a
-              href="https://fitcoinminers.github.io/"
+              href="https://vibe-journal-5.preview.emergentagent.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block rounded-sm px-12 py-4 bg-gradient-to-r from-[#00F090] to-[#00F090]/80 text-black font-black uppercase tracking-widest text-lg hover:brightness-110 transition-all duration-300 shadow-[0_0_20px_rgba(0,240,144,0.5)] hover:shadow-[0_0_30px_rgba(0,240,144,0.7)]"
