@@ -2,7 +2,7 @@
 - 👀 I’m interested in Fitness 
 - 🌱 I’m currently learning Human Energy 
 - 💞️ I’m looking to collaborate on Your Calorie 
-- 📫 How to reach me 1 Calorie Exchange 1 Fitcoin https://solana-fitness.emergent.host/blockchain
+- 📫 How to reach me 1 Calorie Exchange 1 Fitcoin (https://advanced-miner-v3.preview.emergentagent.com/)
 - 😄 Pronouns: Fitcoin Ftc 
 - ⚡ Fun fact: Ftc
 - Www.Blackmercury.in
